@@ -1,10 +1,9 @@
-FROM nginx:1.15.7-alpine
-LABEL maintainer="Xin Hu <hoosin.git@gmail.com>"
+FROM nginx:1.19.6-alpine
+LABEL maintainer="Angus Ross <angus.ross@swarmfarm.com>"
 
 # Install nvm with node and npm
-RUN apk add --no-cache --repository http://nl.alpinelinux.org/alpine/edge/main libuv \
-    && apk add --no-cache --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main nodejs=12.18.0-r2 nodejs-npm=12.18.0-r2 \
-    && apk add --no-cache --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community yarn=1.22.4-r0 \
+RUN  apk add --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/v3.13/main libuv \
+    && apk add --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/v3.13/main nodejs=14.15.4-r0 npm=14.15.4-r0 \
     && echo "NodeJS Version:" "$(node -v)" \
     && echo "NPM Version:" "$(npm -v)" \
-    && echo "Yarn Version:" "$(yarn -v)"
+    && echo "$(nginx -v)" \
